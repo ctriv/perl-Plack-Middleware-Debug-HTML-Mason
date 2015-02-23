@@ -1,6 +1,8 @@
 Revision history for Plack-Middleware-Debug-HTML-Mason
 
 {{$NEXT}}
+	Show a (hopefully) helpful error message when the plugin wasn't loaded
+	into mason.
 
 0.1 Mon Feb 23 2015
 	Initial Release

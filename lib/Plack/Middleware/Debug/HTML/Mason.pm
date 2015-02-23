@@ -27,6 +27,7 @@ processed by HTML::Mason.
 my $root;
 my @stack;
 my %env;
+my $ran;
 
 package Plack::Middleware::Debug::HTML::Mason::Plugin {
 	use strict;
@@ -72,6 +73,7 @@ package Plack::Middleware::Debug::HTML::Mason::Plugin {
 		$env{main_comp} = $context->request->request_comp;
 		$env{args}      = $context->args;
 		$env{comp_root} = $context->request->interp->comp_root;
+		$ran = 1;
 	}
 
 }
@@ -83,12 +85,19 @@ sub run {
 	$root  = undef;
 	@stack = ();
 	%env   = ();
+	$ran   = 0;
 	
 	return sub {
 		my $res = shift;
 		
 		$panel->nav_title("HTML::Mason");
-		$panel->title("HTML::Mason Summary");		
+		$panel->title("HTML::Mason Summary");
+		
+		unless ($ran) {
+			$panel->content('<h2 style="margin-top: 20px;">No Data</h2><p>No data was recorded by the mason plugin.  Make sure mason is configured to use the <code>Plack::Middleware::Debug::HTML::Mason::Plugin</code> plugin.</p>');
+			return;
+		}
+		
 		
 		my $depth  = 0;
 		my $frame;
