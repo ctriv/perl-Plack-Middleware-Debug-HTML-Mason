@@ -1,0 +1,24 @@
+=pod
+
+=head1 NAME
+
+Plack::Middleware::Debug::HTML::Mason - Debug info for old HTML::Mason apps.
+
+=head1 VERSION
+
+version 0.1
+
+=head1 SYNOPSIS
+
+	# add this to your mason configuration
+	plugins => ['Plack::Middleware::Debug::HTML::Mason::Plugin']
+	
+	# and then enable the middleware
+	enable 'Debug::HTML::Mason';
+
+=head1 DESCRIPTION
+
+Provides a call tree and some basic configuration information for a request
+processed by HTML::Mason.
+
+=cut
