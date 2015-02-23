@@ -155,5 +155,42 @@ END
 	};
 }
 
+
+
+=head1 TODO
+
+=over 2
+
+=item *
+
+The docs are pretty middling at the moment.
+
+=back
+
+=head1 AUTHORS
+
+    Chris Reinhardt
+    crein@cpan.org
+
+    David Hand
+    cogent@cpan.org
+    
+=head1 COPYRIGHT
+
+This program is free software; you can redistribute
+it and/or modify it under the same terms as Perl itself.
+
+The full text of the license can be found in the
+LICENSE file included with this module.
+
+=head1 SEE ALSO
+
+L<Plack::Middleware::Debug>, L<HTML::Mason>, perl(1)
+
+=cut
+
+1;
+__END__
+
 1;
 __END__
