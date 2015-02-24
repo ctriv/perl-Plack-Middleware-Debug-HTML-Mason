@@ -1,6 +1,8 @@
 Revision history for Plack-Middleware-Debug-HTML-Mason
 
 {{$NEXT}}
+
+0.3 Tue Feb 24 2015
 	Update metadata to include the minimal perl version (5.14).
 	
 	Set a flag in the psgi env (psgi.middleware.debug.htmlmason) when the
