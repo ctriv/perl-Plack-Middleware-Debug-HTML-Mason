@@ -20,7 +20,20 @@ Plack::Middleware::Debug::HTML::Mason - Debug info for old HTML::Mason apps.
 =head1 DESCRIPTION
 
 Provides a call tree and some basic configuration information for a request
-processed by HTML::Mason.
+processed by HTML::Mason.  To use this panel the included plugin
+C<Plack::Middleware::Debug::HTML::Mason::Plugin> must be called by Mason.  If
+this panel is enabled, the C<psgi.middleware.debug.htmlmason> key will be set
+in the psgi environment.  This might be useful if you want load the plugin as
+needed:
+
+		if ($env->{'psgi.middleware.debug.htmlmason'}) {
+			$handler->interp->plugins(['Plack::Middleware::Debug::HTML::Mason::Plugin']);
+		}
+		else {
+			$handler->interp->plugins([]);
+		}
+		
+		...
 
 =cut
 
@@ -86,6 +99,7 @@ sub run {
 	@stack = ();
 	%env   = ();
 	$ran   = 0;
+	$env->{'psgi.middleware.debug.htmlmason'} = 1;
 	
 	return sub {
 		my $res = shift;
@@ -197,9 +211,6 @@ LICENSE file included with this module.
 L<Plack::Middleware::Debug>, L<HTML::Mason>, perl(1)
 
 =cut
-
-1;
-__END__
 
 1;
 __END__

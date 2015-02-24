@@ -19,7 +19,20 @@ version 0.2
 =head1 DESCRIPTION
 
 Provides a call tree and some basic configuration information for a request
-processed by HTML::Mason.
+processed by HTML::Mason.  To use this panel the included plugin
+C<Plack::Middleware::Debug::HTML::Mason::Plugin> must be called by Mason.  If
+this panel is enabled, the C<psgi.middleware.debug.htmlmason> key will be set
+in the psgi environment.  This might be useful if you want load the plugin as
+needed:
+
+		if ($env->{'psgi.middleware.debug.htmlmason'}) {
+			$handler->interp->plugins(['Plack::Middleware::Debug::HTML::Mason::Plugin']);
+		}
+		else {
+			$handler->interp->plugins([]);
+		}
+		
+		...
 
 =head1 TODO
 
